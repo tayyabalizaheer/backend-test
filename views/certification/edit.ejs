@@ -1,0 +1,52 @@
+<%- contentFor('content') %>
+<div class="card mb-4">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">Edit Certification</h5>
+    </div>
+    <div class="card-body">
+        <form action="/certification/update/<%= Edu.id %>" method="post" enctype="multipart/form-data">
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-title">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" id="basic-default-title" value="<%= Edu.title %>"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-description">Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="description" id="basic-default-description"
+                        rows="5"><%= Edu.description %></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-year">Year</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="year" id="basic-default-year" value="<%= Edu.year %>" />
+                    <%- include('../partials/error', {field: 'year'}); %>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-institute">Institute</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="institute" id="basic-default-institute" value="<%= Edu.institute %>" />
+                    <%- include('../partials/error', {field: 'institute'}); %>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-status">status</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked"
+                            <%= Edu.status?'checked':'' %>>
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

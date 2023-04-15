@@ -1,0 +1,67 @@
+<%- contentFor('content') %>
+<div class="card mb-4">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">Edit Projects</h5>
+    </div>
+    <div class="card-body">
+        <form action="/projects/update/<%= project.id %>" method="post" enctype="multipart/form-data">
+
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-title">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" id="basic-default-title" value="<%= project.title %>"/>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-thumbnail">Thumbnail</label>
+                <div class="col-sm-5">
+                    <input type="file" class="form-control" name="thumbnail" id="basic-default-thumbnail" />
+                </div>
+                <div class="col-sm-5">
+                    <img src="<%= getUrl('uploads/' +project.thumbnail)  %>" class="thumbnail" alt="">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-link">link</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="link" id="basic-default-link" value="<%= project.link %>" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-technology">Technology</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="technology" id="basic-default-technology" value="<%= project.technology %>" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-region">Region</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="region" id="basic-default-region" value="<%= project.region %>" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-description">Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="description" id="basic-default-description"
+                        rows="5"><%= project.description %></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-status">status</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" name="status" id="flexSwitchCheckChecked"
+                            <%= project.status?'checked':'' %>>
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

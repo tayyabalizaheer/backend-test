@@ -1,0 +1,48 @@
+<%- contentFor('content') %>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-6"><h5>Skills</h5></div>
+            <div class="col-6 text-end"><a href="/skills/create" class="btn btn-primary"> Create </a></div>
+        </div>
+    </div>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Percentage</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                <% skills.forEach(e => { %>
+                    <tr>
+                        <td><%= e.title %> </td>
+                        <td><%= e.percentage %> </td>
+                        <td>
+                            <span class="badge bg-label-<%= e.status?'success':'danger' %>  me-1"><%= e.status?'Active':'Pause' %></span>
+                        </td>
+                        
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="skills/edit/<%= e.id %>"><i class="bx bx-edit-alt me-1"></i>
+                                        Edit</a>
+                                    <a class="dropdown-item" href="skills/delete/<%= e.id %>"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+                
+              
+            </tbody>
+        </table>
+    </div>
+</div>
